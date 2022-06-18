@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="mainwrapper">
+  <div class="topwrapper">
+    <div class="topnav">
+      <div>
+        <a routerLinkActive="active" routerLink="home">{{Tab1}}</a>
+      </div>
+      <div>
+        <a routerLinkActive="active" routerLink="diagrams">{{Tab2}}</a>
+      </div>
+      <div>
+        <a routerLinkActive="active" routerLink="form">{{Tab3}}</a>
+      </div>
+    </div>
+    <div class="darkmodetoggle">
+      <app-dark-mode></app-dark-mode>
+    </div>
+  </div>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
