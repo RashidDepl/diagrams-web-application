@@ -1,6 +1,6 @@
 /* Add a black background color to the top navigation */
 .topnav {
-  background-color: #333;
+  background-color: var(--secondary-dark-color);
   overflow: hidden;
   width: 100%;
 }
@@ -8,7 +8,7 @@
 /* Style the links inside the navigation bar */
 .topnav a {
   float: left;
-  color: #f2f2f2;
+  color: var(--text-on-secondary-color);
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -17,14 +17,14 @@
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #ddd;
-  color: black;
+  background-color: var(--secondary-light-color);
+  color: var(--text-on-secondary-color);
 }
 
 /* Add a color to the active/current link */
 .topnav a.active {
-  background-color: #04AA6D;
-  color: white;
+  background-color: var(--primary-color);
+  color:var(--text-on-primary-color);
 }
 
 .darkmodetoggle{
@@ -34,7 +34,7 @@
 }
 
 .topwrapper{
-  background-color: #333;
+  background-color: var(--secondary-dark-color);
   display: flex;
   position: relative;
 }
@@ -47,5 +47,5 @@
 
 .flowcomponents{
   flex-grow: 1;
-  height: 92vh;
+  height: 90vh;
 }

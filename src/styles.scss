@@ -1,14 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
 body.dark-mode {
-  background-color: #2d3436;
+  background-color: var(--secondary-color);
   color: #dfe6e9;
+  --primary-color: #4caf50;
+  --primary-light-color: #80e27e;
+  --primary-dark-color: #087f23;
+  --secondary-light-color: #484848;
+  --secondary-dark-color: #000000;
+  --secondary-color: #212121;
+  --text-on-secondary-color: #ffffff;
+  --text-on-primary-color: #212121;
 }
 
 body.light-mode {
-  background-color: #dfe6e9;
+  background-color: var(--secondary-color);
   color: #2d3436;
+  --primary-color: #4caf50;
+  --primary-light-color: #80e27e;
+  --primary-dark-color: #087f23;
+  --secondary-light-color: #efefef;
+  --secondary-dark-color: #8d8d8d;
+  --secondary-color: #bdbdbd;
+  --text-on-secondary-color: #212121;
+  --text-on-primary-color: #212121;
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing: content-box;
+}
+
+body:not(.dark-mode-preloading) {
+  transition: all 0.3s linear;
 }
