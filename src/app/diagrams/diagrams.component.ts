@@ -1,5 +1,4 @@
-import { getLocaleDateFormat } from '@angular/common';
-import { Component, Directive, ElementRef, HostBinding, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Observable } from 'rxjs';
 import { DarkModeService } from 'angular-dark-mode';
 declare let google: any;
@@ -20,7 +19,6 @@ export class DiagramsComponent implements OnInit {
     this.darkMode$.subscribe(this.drawChart)
   }
   onResize() {
-    console.log('resizing called')
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(this.drawChart);
   }

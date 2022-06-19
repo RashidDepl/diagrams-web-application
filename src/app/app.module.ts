@@ -8,6 +8,8 @@ import { DiagramsComponent } from './diagrams/diagrams.component';
 import { HomeComponent } from './home/home.component';
 import { DarkModeComponent } from './dark-mode/dark-mode.component';
 
+import { FormsModule, ReactiveFormsModule} from '@angular/forms' 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,9 @@ import { DarkModeComponent } from './dark-mode/dark-mode.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

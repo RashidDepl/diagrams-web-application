@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnInit {
+export class FormComponent {
+  checkoutForm = this.formBuilder.group({
+    year: '',
+    sales: '',
+    expenses: ''
+  });
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder){}
 
-  ngOnInit(): void {
+  onSubmit(): void{
+
   }
-
 }
