@@ -14,9 +14,7 @@ export class DiagramsComponent implements OnInit {
   darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
 
   private pointsArray: Array<DiagramPoint> = new Array<DiagramPoint>;
-  private varInitDraw = function(){
-    console.log("First varIniDraw called")
-  }
+  private varInitDraw = function(){}
 
   constructor(private darkModeService: DarkModeService, private apiService: ApiService) {}
 
@@ -24,10 +22,8 @@ export class DiagramsComponent implements OnInit {
     this.apiService.getList().pipe().subscribe(
       (result) => {
         this.pointsArray = result as Array<DiagramPoint>;
-        console.log(this.pointsArray)
         this.varInitDraw = this.drawChart(this.pointsArray)
-        this.darkMode$.subscribe(this.varInitDraw)
-        this.initDraw(this.varInitDraw)
+        this.initDraw(this.varInitDraw, this.darkMode$)
       },
       () => { }
     )
@@ -36,10 +32,13 @@ export class DiagramsComponent implements OnInit {
     this.varInitDraw()
   }
 
-  private initDraw(fn:()=> any) {
+  private initDraw(fn:()=> any, darkModeObservable: Observable<boolean>) {
     if (this.pointsArray != undefined && this.pointsArray.length > 0) {
       google.charts.load('current', { 'packages': ['corechart'] });
-      google.charts.setOnLoadCallback(fn);
+      google.charts.setOnLoadCallback(function(){
+        fn();
+        darkModeObservable.subscribe(fn)
+      });
     }
   }
 
