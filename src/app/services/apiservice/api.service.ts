@@ -7,7 +7,7 @@ import { DiagramPoint } from '../models/DiagramPoint';
 })
 export class ApiService {
 
-  private apiUrl: string = 'http://api.mocklets.com/p68496/';
+  private apiUrl: string = 'https://api.mocklets.com/p68496/';
 
   private postQueue: string = 'list/add';
 
