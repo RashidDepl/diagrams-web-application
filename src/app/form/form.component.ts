@@ -40,7 +40,7 @@ export class FormComponent {
       console.log(this.checkoutForm.getRawValue())
       this.apiService.addPoint(diagramPoint).subscribe(
         () =>{
-          this.dialogService.openDialog('Succeed', 'Save sucessfull')
+          this.dialogService.openDialog('Succeed', 'Saved successfully')
         }
         ,
         ()=>{
