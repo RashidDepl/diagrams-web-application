@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../services/apiservice/api.service';
+import { DataLoadingMessageService } from '../services/dataloadingmessage/data-loading-message.service';
 import { DialogService } from '../services/dialogservice/dialog.service';
 import { DiagramPoint } from '../services/models/DiagramPoint';
 
@@ -26,7 +27,8 @@ export class FormComponent {
   constructor(
     private formBuilder: FormBuilder,
     private apiService: ApiService,
-    private dialogService: DialogService) { }
+    private dialogService: DialogService,
+    private dataLoadingMessageService: DataLoadingMessageService) { }
 
   onSubmit(): void {
     if (this.isValuesAreValid()) {
@@ -38,19 +40,23 @@ export class FormComponent {
         expenses: expensesTemp
       };
       console.log(this.checkoutForm.getRawValue())
+      this.dataLoadingMessageService.broadcastLoadingStateChanged(true)
       this.apiService.addPoint(diagramPoint).subscribe(
         () =>{
           this.dialogService.openDialog('Succeed', 'Saved successfully')
+          this.dataLoadingMessageService.broadcastLoadingStateChanged(false)
         }
         ,
         ()=>{
           //TODO: add diffrent error messages
           this.dialogService.openDialog('Server error', 'Please try later')
+          this.dataLoadingMessageService.broadcastLoadingStateChanged(false)
         }
       )
     } else {
       //TODO: add diffrent error messages
       this.dialogService.openDialog('Warning!', 'Please enter valid values')
+      this.dataLoadingMessageService.broadcastLoadingStateChanged(false)
     }
   }
 

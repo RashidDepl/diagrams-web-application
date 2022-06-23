@@ -12,8 +12,9 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatDialogModule } from '@angular/material/dialog';
-import { DialogComponent } from './dialog/dialog.component'
-
+import { DialogComponent } from './dialog/dialog.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { DialogComponent } from './dialog/dialog.component'
     DiagramsComponent,
     HomeComponent,
     DarkModeComponent,
-    DialogComponent
+    DialogComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { DialogComponent } from './dialog/dialog.component'
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

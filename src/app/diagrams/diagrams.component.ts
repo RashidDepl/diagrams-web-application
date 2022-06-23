@@ -4,6 +4,7 @@ import { DarkModeService } from 'angular-dark-mode';
 import { ApiService } from '../services/apiservice/api.service';
 import { DiagramPoint } from '../services/models/DiagramPoint';
 import { DialogService } from '../services/dialogservice/dialog.service';
+import { DataLoadingMessageService } from '../services/dataloadingmessage/data-loading-message.service';
 declare let google: any;
 @Component({
   selector: 'app-diagrams',
@@ -19,17 +20,22 @@ export class DiagramsComponent implements OnInit {
 
   constructor(private darkModeService: DarkModeService, 
     private apiService: ApiService,
-    private dialogService:DialogService) {}
+    private dialogService:DialogService,
+    private dataLoadingMessageService: DataLoadingMessageService) {
+      this.dataLoadingMessageService.broadcastLoadingStateChanged(true);
+    }
 
   ngOnInit(): void {
-    this.apiService.getList().pipe().subscribe(
+    this.apiService.getList().subscribe(
       (result) => {
         this.pointsArray = result as Array<DiagramPoint>;
         this.varInitDraw = this.drawChart(this.pointsArray)
         this.initDraw(this.varInitDraw, this.darkMode$)
+        this.dataLoadingMessageService.broadcastLoadingStateChanged(false)
       },
       () => {
         this.dialogService.openDialog('Server error', 'Please try later')
+        this.dataLoadingMessageService.broadcastLoadingStateChanged(false)
        }
     )
   }
