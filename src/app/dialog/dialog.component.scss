@@ -1,0 +1,19 @@
+.dialogwrapper{
+    min-width: 300px;
+}
+
+.okbutton {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--text-on-primary-color);
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+h2,p{
+    color: var(--text-on-secondary-color)
+}

@@ -9,7 +9,10 @@ import { HomeComponent } from './home/home.component';
 import { DarkModeComponent } from './dark-mode/dark-mode.component';
 
 import { FormsModule, ReactiveFormsModule} from '@angular/forms' 
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogComponent } from './dialog/dialog.component'
 
 @NgModule({
   declarations: [
@@ -17,14 +20,17 @@ import {HttpClientModule} from '@angular/common/http'
     FormComponent,
     DiagramsComponent,
     HomeComponent,
-    DarkModeComponent
+    DarkModeComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

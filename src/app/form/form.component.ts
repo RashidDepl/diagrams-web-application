@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../services/apiservice/api.service';
+import { DialogService } from '../services/dialogservice/dialog.service';
 import { DiagramPoint } from '../services/models/DiagramPoint';
 
 @Component({
@@ -24,7 +25,8 @@ export class FormComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private apiService: ApiService) { }
+    private apiService: ApiService,
+    private dialogService: DialogService) { }
 
   onSubmit(): void {
     if (this.isValuesAreValid()) {
@@ -38,16 +40,17 @@ export class FormComponent {
       console.log(this.checkoutForm.getRawValue())
       this.apiService.addPoint(diagramPoint).subscribe(
         () =>{
-          console.log("Point sending succeed")
+          this.dialogService.openDialog('Succeed', 'Save sucessfull')
         }
         ,
         ()=>{
-          console.log("Error while sending point")
-          //TODO: add error message
+          //TODO: add diffrent error messages
+          this.dialogService.openDialog('Server error', 'Please try later')
         }
       )
     } else {
-      //TODO: add error message
+      //TODO: add diffrent error messages
+      this.dialogService.openDialog('Warning!', 'Please enter valid values')
     }
   }
 

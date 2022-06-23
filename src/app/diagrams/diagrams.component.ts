@@ -3,6 +3,7 @@ import { catchError, Observable, tap, of } from 'rxjs';
 import { DarkModeService } from 'angular-dark-mode';
 import { ApiService } from '../services/apiservice/api.service';
 import { DiagramPoint } from '../services/models/DiagramPoint';
+import { DialogService } from '../services/dialogservice/dialog.service';
 declare let google: any;
 @Component({
   selector: 'app-diagrams',
@@ -16,7 +17,9 @@ export class DiagramsComponent implements OnInit {
   private pointsArray: Array<DiagramPoint> = new Array<DiagramPoint>;
   private varInitDraw = function(){}
 
-  constructor(private darkModeService: DarkModeService, private apiService: ApiService) {}
+  constructor(private darkModeService: DarkModeService, 
+    private apiService: ApiService,
+    private dialogService:DialogService) {}
 
   ngOnInit(): void {
     this.apiService.getList().pipe().subscribe(
@@ -25,7 +28,9 @@ export class DiagramsComponent implements OnInit {
         this.varInitDraw = this.drawChart(this.pointsArray)
         this.initDraw(this.varInitDraw, this.darkMode$)
       },
-      () => { }
+      () => {
+        this.dialogService.openDialog('Server error', 'Please try later')
+       }
     )
   }
   onResize() {

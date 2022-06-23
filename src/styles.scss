@@ -32,3 +32,8 @@ body.light-mode {
 // body:not(.dark-mode-preloading) {
 //   transition: all 0.3s linear;
 // }
+
+
+mat-dialog-container{
+  background: var(--secondary-light-color) !important;
+}
