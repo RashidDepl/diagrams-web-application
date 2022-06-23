@@ -14,6 +14,7 @@ declare let google: any;
 export class DiagramsComponent implements OnInit {
 
   darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
+  errorHappened = false;
 
   private pointsArray: Array<DiagramPoint> = new Array<DiagramPoint>;
   private varInitDraw = function(){}
@@ -36,6 +37,7 @@ export class DiagramsComponent implements OnInit {
       () => {
         this.dialogService.openDialog('Server error', 'Please try later')
         this.dataLoadingMessageService.broadcastLoadingStateChanged(false)
+        this.errorHappened = true;
        }
     )
   }
